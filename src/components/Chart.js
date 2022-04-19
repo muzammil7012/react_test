@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import * as d3 from 'd3';
 import './chart.css';
 
 const Chart = (props) => {
-    const [data] = useState(props.data);
+    const data = props.data;
 
     useEffect(() => {
         function perc2color(rssi, s, t) {
@@ -155,7 +155,7 @@ const Chart = (props) => {
             .force("charge", d3.forceManyBody().strength(-8800))
             .force("center", d3.forceCenter(width / 2, height / 2))
             .on("end", drawLines(link));
-    })
+    }, [props.data])
 
 
     return (
